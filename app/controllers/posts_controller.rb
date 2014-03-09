@@ -12,7 +12,7 @@ class PostsController < ApplicationController
   end
 
 def create
-  @post = Post.new(params[:post])
+  @post = Post.new(post_params)
 
   if @post.save
     flash[:notice] = "Post was saved."
@@ -29,7 +29,7 @@ end
 
   def update
     @post = Post.find(params[:id])
-    if @post.update_attributes(params[:post])
+    if @post.update_attributes(post_params)
       flash[:notice] = "Post was updated."
       redirect_to @post
     else
@@ -38,3 +38,8 @@ end
     end
   end
 end
+
+    private
+        def post_params
+          params.require(:post).permit(:title, :body)
+        end
