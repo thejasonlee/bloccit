@@ -39,4 +39,4 @@ gem 'turbolinks'
 gem 'rails_12factor', group: :production
 gem 'devise'
 gem 'cancan'
-
+gem 'redcarpet'
