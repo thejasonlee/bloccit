@@ -40,3 +40,7 @@ gem 'rails_12factor', group: :production
 gem 'devise'
 gem 'cancan'
 gem 'redcarpet'
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'fog'
+gem 'figaro'
