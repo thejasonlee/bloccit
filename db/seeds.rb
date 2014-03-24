@@ -35,7 +35,6 @@ rand(4..10).times do
 
     topics.rotate! # add this line to move the first topic to the last, so that posts get assigned to different topics.
 
-    # comments...
   end
 end
 
