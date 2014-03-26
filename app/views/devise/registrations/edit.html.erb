@@ -54,6 +54,7 @@
     <%= f.label :avatar, class: 'control-label' %>
     <div class="controls"> 
       <%= f.file_field :avatar %>
+      <%= f.hidden_field :avatar_cache %> 
     </div>
   </div>  
   
@@ -61,7 +62,7 @@
     <div class="controls">
       <%= f.submit "Update", class: 'btn' %>
     </div>
-  </div>  
+  </div>
 <% end %>
 
 <h3>Cancel my account</h3>
