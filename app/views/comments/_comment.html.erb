@@ -1,0 +1,14 @@
+<div class="media">
+  <%= link_to '#', class: 'pull-left' do %>
+ 
+
+  <div class="media-body">
+    <small>
+      <%= comment.user.name %> commented <%= time_ago_in_words(comment.created_at) %> ago
+    </small>
+    <p>
+      <%= comment.body %>
+    </p>
+  </div>
+
+ <% end %>

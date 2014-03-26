@@ -7,7 +7,23 @@
       submitted <%= time_ago_in_words(@post.created_at) %> ago by 
       <%= @post.user.name %>
     </small>   
+    
     <p><%= markdown @post.body %></p>
+    <p><%= image_tag(@post.user.avatar.tiny.url) if @post.user.avatar? %></p>
+    
+    <hr>
+
+    <h2><%= @comments.count %> Comments</h2>
+
+    <%= render @comments %>
+
+    <% if can? :create, Comment %>
+      <hr>
+
+      <h4>New Comment</h4>
+      <%= render partial: 'comments/form', locals: { topic: @topic, post: @post, comment: @comment } %>
+    <% end %>
+
   </div>
   <div class="span4">
     <% if can? :edit, @post %>

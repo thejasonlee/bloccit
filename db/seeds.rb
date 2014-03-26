@@ -2,13 +2,14 @@ require 'faker'
 
 # Create 15 topics
 topics = []
-1105.times do
+15.times do
   topics << Topic.create(
     name: Faker::Lorem.words(rand(1..10)).join(" "), 
     description: Faker::Lorem.paragraph(rand(1..4))
   )
 end
 
+#create about a half dozen users
 rand(4..10).times do
   password = Faker::Lorem.characters(10)
   u = User.new(
@@ -24,6 +25,7 @@ rand(4..10).times do
   # The `skip_confirmation!` method sets the confirmation date
   # to avoid sending an email. The `save` method updates the database.
 
+  #each user will create about 100 posts, rotating through the topics. 
   rand(75..112).times do
     topic = topics.first # getting the first topic here
     p = u.posts.create(
@@ -35,6 +37,17 @@ rand(4..10).times do
 
     topics.rotate! # add this line to move the first topic to the last, so that posts get assigned to different topics.
 
+
+  end
+end
+
+User.all.each do |user| 
+  rand(30..50).times do
+    p = Post.find(rand(1..Post.count))
+    c = p.comments.create(
+      body: Faker::Lorem.paragraphs(rand(1..2)).join("\n"))
+    # set the created_at to a time within the past year
+    c.update_attribute(:created_at, Time.now - rand(600..31536000))
   end
 end
 
