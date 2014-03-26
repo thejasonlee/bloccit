@@ -1,12 +1,14 @@
-AWS_ACCESS_KEY_ID:
-AWS_SECRET_ACCESS_KEY:
+AWS_ACCESS_KEY_ID: "something1"
+AWS_SECRET_ACCESS_KEY: "something2"
+
 development:
-  SENDGRID_USERNAME:
-  SENDGRID_PASSWORD:
-  AWS_BUCKET:
-  FACEBOOK_ID: 
-  FACEBOOK_SECRET: 
+  SENDGRID_USERNAME: "something3"
+  SENDGRID_PASSWORD: "something4"
+  AWS_BUCKET: "something5"
+  FACEBOOK_ID: "something6"
+  FACEBOOK_SECRET: "something7"
+
 production:
-  AWS_BUCKET:
-  FACEBOOK_ID: 
-  FACEBOOK_SECRET: 
+  AWS_BUCKET: "something8"
+  FACEBOOK_ID: "something9"
+  FACEBOOK_SECRET: "something10"
