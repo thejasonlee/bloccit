@@ -8,8 +8,8 @@ topics = []
     description: Faker::Lorem.paragraph(rand(1..4))
   )
 end
- 
 
+#Create about a half dozen users.
 rand(4..10).times do
   password = Faker::Lorem.characters(10)
   u = User.new(
@@ -20,11 +20,12 @@ rand(4..10).times do
   u.skip_confirmation!
   u.save
 
+  #For each user, create about a half dozen posts.
   rand(5..12).times do
     topic = topics.first
     p = u.posts.create(
       topic: topic,
-      title: Faker::Lorem.words(rand(1..10)).join(" "), 
+      title: Faker::Lorem.words(rand(7..15)).join(" "), 
       body: Faker::Lorem.paragraphs(rand(1..4)).join("\n"))
     # set the created_at to a time within the past year
     p.update_attribute(:created_at, Time.now - rand(600..31536000))
@@ -33,6 +34,7 @@ rand(4..10).times do
   end
 end
 
+#For each user, create about 40 comments
 post_count = Post.count
 User.all.each do |user|
     rand(30..50).times do
