@@ -1,10 +1,12 @@
 class CommentsController < ApplicationController
-
   def create
     @topic = Topic.find(params[:topic_id])
-    @post = Post.find(params[:post_id])
-    @comment = @post.comments
+    @post = @topic.posts.find(params[:post_id])
+    @comments = @post.comments
     
+    @comment = current_user.comments.build(comments_params)
+    @comment.post = @post
+
     authorize! :create, @comment, message: "You need to be signed up to do that."
     
     if @comment.save
@@ -31,4 +33,9 @@ class CommentsController < ApplicationController
       redirect_to [@topic, @post]
     end
   end
+
+  private
+    def comments_params
+      params.require(:comment).permit(:body)
+    end
 end
