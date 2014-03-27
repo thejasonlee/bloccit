@@ -11,7 +11,7 @@
   <% end %>
   <%= control_group_tag(comment.errors[:body]) do %>
     <div class="controls">
-      <%= f.text_area :body, rows: 8 %>
+      <%= f.text_area :body, rows: 8, :autofocus => true %>
     </div>
   <% end %>
   <div class="control-group">
