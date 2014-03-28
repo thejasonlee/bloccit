@@ -1,0 +1,19 @@
+<% if can? :create, Vote %>
+  <div class="vote-arrows pull-left">
+    <span>
+      <%= link_to " ", 
+      topic_post_up_vote_path(topic, post), 
+      class: 'glyphicon glyphicon-chevron-up' %>
+    </span>
+    
+    <div>
+      <strong><%= post.points %></strong>
+    </div>
+
+    <span>
+      <%= link_to " ", 
+      topic_post_down_vote_path(topic, post), 
+      class: 'glyphicon glyphicon-chevron-down' %>
+    </span>
+  </div>
+<% end %>

@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :omniauthable, :omniauth_providers => [:facebook]
   has_many :posts
+  has_many :votes, dependent: :destroy
   has_many :comments
 
   before_create :set_member
