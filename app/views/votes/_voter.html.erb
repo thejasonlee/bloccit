@@ -1,9 +1,9 @@
-<% if can? :create, Vote %>
+
   <div class="vote-arrows pull-left">
-    <span>
-      <%= link_to " ", 
-      topic_post_up_vote_path(topic, post), 
-      class: 'glyphicon glyphicon-chevron-up' %>
+    <span>   
+        <%= link_to " ", 
+            topic_post_up_vote_path(topic, post), 
+              class: "glyphicon glyphicon-chevron-up #{(current_user.voted(post) && current_user.voted(post).up_vote?) ? 'voted' : '' }" %>
     </span>
     
     <div>
@@ -11,9 +11,8 @@
     </div>
 
     <span>
-      <%= link_to " ", 
-      topic_post_down_vote_path(topic, post), 
-      class: 'glyphicon glyphicon-chevron-down' %>
+        <%= link_to " ", 
+        topic_post_down_vote_path(topic, post), 
+        class: "glyphicon glyphicon-chevron-down #{(current_user.voted(post) && current_user.voted(post).down_vote?) ? 'voted' : '' }" %>
     </span>
   </div>
-<% end %>

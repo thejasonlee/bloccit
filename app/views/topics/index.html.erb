@@ -1,5 +1,9 @@
 <h1>Topics</h1>
 
+<% if policy(Topic.new).create? %>
+  <%= link_to "New Topic", new_topic_path, class: 'btn btn-success btn-mini' %>
+<% end %>
+
 <div class="row">
   <div class="span8">
     <% @topics.each do |topic| %>
@@ -15,10 +19,5 @@
       </div>
     <% end %>
     <%= will_paginate @topics %>
-  </div>
-  <div class="span4">
-    <% if can? :create, Topic %>
-      <%= link_to "New Topic", new_topic_path, class: 'btn btn-large btn-block' %>
-    <% end %>
   </div>
 </div>

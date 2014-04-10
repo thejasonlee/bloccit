@@ -9,21 +9,25 @@
       </ul>
     </div>
   <% end %>
+  
   <%= control_group_tag(post.errors[:title]) do %>
     <%= f.label :title, class: 'control-label' %>
     <div class="controls">
-      <%= f.text_field :title, :autofocus => true %>
+      <%= f.text_field :title, class: 'form-control', placeholder: "Post title here...", :autofocus => true %> 
     </div>
   <% end %>
+  
   <%= control_group_tag(post.errors[:body]) do %>
     <%= f.label :body, class: 'control-label' %>
     <div class="controls">
-      <%= f.text_area :body, rows: 8 %>
+      <%= f.text_area :body, rows: 8, class: 'form-control', placeholder: "Type your post here..." %>
     </div>
   <% end %>
+  
   <div class="control-group">
     <div class="controls">
-      <%= f.submit "Save", class: 'btn' %>
+      <%= f.submit "Save", class: 'btn btn-success' %>
     </div>
   </div>
+
 <% end %>

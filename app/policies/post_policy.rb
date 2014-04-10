@@ -1,0 +1,3 @@
+class PostPolicy < TopicPolicy
+
+end

@@ -1,11 +1,6 @@
 class PostsController < ApplicationController
-  def index
-    @posts = Post.all
-  end
-
   def show
     @topic = Topic.find(params[:topic_id])
-    authorize @topic
     @post = Post.find(params[:id])
     @comments = @post.comments
     @comment = Comment.new
@@ -14,16 +9,15 @@ class PostsController < ApplicationController
   def new
     @topic = Topic.find(params[:topic_id])
     @post = Post.new
-    authorize! :create, Post, message: "You need to be a member to create a new post."
+    authorize @post
   end
 
   def create
     @topic = Topic.find(params[:topic_id])
     @post = current_user.posts.build(post_params)
     @post.topic = @topic
-    
-    authorize! :create, @post, message: "You need to be signed up to do that."
-    
+    authorize @post
+        
     if @post.save
       flash[:notice] = "Post was saved."
       redirect_to [@topic, @post]
@@ -36,13 +30,14 @@ class PostsController < ApplicationController
   def edit
     @topic = Topic.find(params[:topic_id])
     @post = Post.find(params[:id])
-    authorize! :edit, @post, message: "You need to own the post to edit it."
+    authorize @post
   end
 
   def update
     @post = Post.find(params[:id])
     @topic = Topic.find(params[:topic_id])
-    authorize! :update, @post, message: "You need to own the post to edit it."
+    authorize @post
+    
     if @post.update_attributes(post_params)
       flash[:notice] = "Post was updated."
       redirect_to [@topic, @post]
@@ -55,9 +50,10 @@ class PostsController < ApplicationController
   def destroy
     @topic = Topic.find(params[:topic_id])
     @post = Post.find(params[:id])
+    authorize @post
 
     title = @post.title
-    authorize! :destroy, @post, message: "You need to own the post to delete it."
+
     if @post.destroy
       flash[:notice] = "\"#{title}\" was deleted successfully."
       redirect_to @topic

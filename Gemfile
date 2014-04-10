@@ -12,37 +12,37 @@ group :development do
   gem 'sqlite3'
 end
 
-# Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0'
-gem 'bootstrap-sass', '~> 3.1.1'
+
 
 group :assets do
-  #gem 'sass-rails',   '~> 3.2.3'
-  #gem 'coffee-rails', '~> 3.2.1'
   gem 'bootstrap-sass', '~> 3.1.1'
-  #gem 'uglifier', '>= 1.0.3'
 end
 
-# Use Uglifier as compressor for JavaScript assets
+
+gem 'sass-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'
-
-# Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
-
-# Use jquery as the JavaScript library
-gem 'jquery-rails'
-gem 'faker'
-
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 
-gem 'rails_12factor', group: :production
+gem 'jbuilder', '~> 1.2'
+
+group :doc do
+  gem 'sdoc', require: false
+end
+
+gem 'bootstrap-sass', '~> 3.1.1'
+gem 'faker'
 gem 'devise'
-gem 'cancan'
+gem 'pundit'
+
+gem 'jquery-rails'
+
+gem 'rails_12factor', group: :production
+
 gem 'redcarpet'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog'
 gem 'figaro'
-gem 'will_paginate', '~> 3.0'
+gem 'will_paginate', '~> 3.0.5'
 gem 'omniauth-facebook'

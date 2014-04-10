@@ -5,8 +5,7 @@ topics = []
 15.times do
   topics << Topic.create(
     name: Faker::Lorem.words(rand(1..10)).join(" "), 
-    description: Faker::Lorem.paragraph(rand(1..4))
-  )
+    description: Faker::Lorem.paragraph(rand(1..4)))
 end
 
 #Create about a half dozen users.
@@ -45,6 +44,11 @@ User.all.each do |user|
         post: p)
       c.update_attribute(:created_at, Time.now - rand(600..31536000))
     end
+end
+
+#For each Topic, assign a user as a creator of the Topic
+Topic.all.each do |topic|
+  topic.user_id = rand(1..User.count)
 end
 
 
