@@ -6,11 +6,10 @@
     <small>
       <%= image_tag(@post.user.avatar.tiny.url) if @post.user.avatar? %>
       submitted <%= time_ago_in_words(@post.created_at) %> ago by 
-      <%= @post.user.name %>
+      <%= @post.user.name %> || <%= pluralize(@post.up_votes, 'up vote') %> || <%= pluralize(@post.down_votes, 'down vote') %>
     </small>   
     
     <p><%= markdown @post.body %></p>
-    <p><%= image_tag(@post.user.avatar.tiny.url) if @post.user.avatar? %></p>
     
     <hr>
     
@@ -26,16 +25,6 @@
       <%= render partial: 'favorites/favorite', locals: { topic: @topic, post: @post } %>
     <% end %>
   
-    <div class="span4">
-        <div>
-          <h3><%= pluralize(@post.points, 'point') %></h3>
-          <small>
-            <%= pluralize(@post.up_votes, 'up vote') %>, 
-            <%= pluralize(@post.down_votes, 'down vote') %>
-          </small>
-        </div>
-    </div>
-
     <hr>
 
     <h2><%= @comments.count %> Comments</h2>
