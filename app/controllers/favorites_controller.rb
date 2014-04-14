@@ -21,6 +21,7 @@ class FavoritesController < ApplicationController
     @favorite = current_user.favorites.find(params[:id])
     authorize @topic
     authorize @post
+    authorize @favorite
     
     if @favorite.destroy
       flash[:notice] = "Removed favorite."
