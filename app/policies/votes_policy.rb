@@ -1,0 +1,3 @@
+class VotesPolicy < PostPolicy
+
+end

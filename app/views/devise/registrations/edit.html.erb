@@ -30,7 +30,7 @@
     <%= f.label :password, class: 'control-label' %>
     <div class="controls">
       <%= f.password_field :password %>
-      <i>(leave blank if you don't want to change it)</i>
+      <i>(Leave blank if you don't want to change it)</i>
     </div>
   </div>
   
@@ -45,9 +45,11 @@
     <%= f.label :current_password, class: 'control-label'  %>
     <div class="controls"> 
       <%= f.password_field :current_password %>
-      <i>(we need your current password to confirm your changes)</i>
+      <i>(We need your current password to confirm your changes)</i>
     </div>
   </div>    
+
+  <br>
   
   <div class="control-group">
     <%= image_tag(current_user.avatar.small.url) if current_user.avatar? %>
@@ -57,21 +59,28 @@
       <%= f.hidden_field :avatar_cache %> 
     </div>
   </div>  
+
+  <br>
   
+  <div class="control-group">
+    <%= f.label :email_favorites %>
+    <%= f.check_box :email_favorites %>
+    <i>(Be notified for new comments on your favorites)</i> 
+  </div> 
+
+  <br>
+
   <div class="control-group">
     <div class="controls">
       <%= f.submit "Update", class: 'btn' %>
     </div>
+    
+    <br>
+
+    <div class="controls">
+      <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'btn btn-danger btn-small' %>
+    </div>
   </div>
 <% end %>
 
-<h3>Cancel my account</h3>
-<div class="horizontal-form">
-  <div class="control-group">
-    <div class="controls">
-      <p>
-        <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'btn btn-danger btn-small' %>
-      </p>
-    </div>
-  </div>
-</div>
+

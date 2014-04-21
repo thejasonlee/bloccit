@@ -22,9 +22,12 @@ class VotesController < ApplicationController
 
   def update_vote(new_value)
     if @vote # if it exists, update it
+      authorize @vote, :update?
       @vote.update_attribute(:value, new_value)
     else # create it
       @vote = current_user.votes.create(value: new_value, post: @post)
+      authorize @vote, :create?
+      @vote.save
     end
   end
 end

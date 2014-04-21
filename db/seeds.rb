@@ -19,8 +19,8 @@ rand(4..10).times do
   u.skip_confirmation!
   u.save
 
-  #For each user, create about a half dozen posts.
-  rand(5..12).times do
+  #For each user, create a few dozen posts.
+  rand(25..42).times do
     topic = topics.first
     p = u.posts.create(
       topic: topic,
