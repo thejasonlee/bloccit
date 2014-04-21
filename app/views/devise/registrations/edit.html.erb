@@ -53,34 +53,33 @@
   
   <div class="control-group">
     <%= image_tag(current_user.avatar.small.url) if current_user.avatar? %>
-    <%= f.label :avatar, class: 'control-label' %>
-    <div class="controls"> 
-      <%= f.file_field :avatar %>
-      <%= f.hidden_field :avatar_cache %> 
-    </div>
+      <%= f.label :avatar, class: 'control-label' %>
+      <div class="controls"> 
+        <%= f.file_field :avatar %>
+        <%= f.hidden_field :avatar_cache %> 
+      </div>
   </div>  
 
   <br>
   
   <div class="control-group">
-    <%= f.label :email_favorites %>
+    <%= f.label :email_favorites, class: 'control-label' %>
     <%= f.check_box :email_favorites %>
-    <i>(Be notified for new comments on your favorites)</i> 
-  </div> 
+    <i>(Be notified for new comments on your favorites)</i>
+  </div>
 
   <br>
 
   <div class="control-group">
-    <div class="controls">
-      <%= f.submit "Update", class: 'btn' %>
-    </div>
-    
-    <br>
+    <%= f.submit "Update", class: 'btn btn-success' %>
+  </div>
 
+  <br>
+
+<% end %>
+
+<div class="control-group">
     <div class="controls">
       <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'btn btn-danger btn-small' %>
     </div>
-  </div>
-<% end %>
-
-
+</div> 
