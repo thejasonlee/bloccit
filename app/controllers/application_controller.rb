@@ -15,6 +15,9 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:account_update) << :avatar
+    devise_parameter_sanitizer.for(:account_update) << :name
+    devise_parameter_sanitizer.for(:account_update) << :email_favorites
+    devise_parameter_sanitizer.for(:account_update) << :avatar_cache
   end
 
   def after_sign_in_path_for(resource)

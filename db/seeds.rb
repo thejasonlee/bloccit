@@ -8,6 +8,9 @@ topics = []
     description: Faker::Lorem.paragraph(rand(1..4)))
 end
 
+#Destroy all users before creating new ones
+User.destroy_all
+
 #Create about a half dozen users.
 rand(4..10).times do
   password = Faker::Lorem.characters(10)
