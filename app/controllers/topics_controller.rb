@@ -22,7 +22,7 @@ class TopicsController < ApplicationController
   end
 
   def create
-    @topic = Topic.new(topic_posts)
+    @topic = Topic.new(topic_params)
     authorize @topic
     #@topic.user_id = current_user.id
     
@@ -61,7 +61,7 @@ class TopicsController < ApplicationController
   end
 
   private
-  def topic_paramas
+  def topic_params
     params.require(:topic).permit(:name, :description, :public)
   end
 

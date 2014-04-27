@@ -1,6 +1,6 @@
 <h1><%= @topic.name %></h1>
 
-<% if policy(@post).create? %>
+<% if policy(Post.new).create? %>
   <%= link_to "New Post", new_topic_post_path(@topic), class: 'btn btn-success btn-mini' %>
 <% end %>
 
