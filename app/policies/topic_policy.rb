@@ -4,8 +4,15 @@ class TopicPolicy < ApplicationPolicy
     true
   end
 
-  #If a user is present AND (created the record OR is an admin) then she can update
+  def create?
+    user.present? && user.role?(:admin) #user.present? && (record.user == user || user.role?(:admin))
+  end
+
   def update?
-    user.present? && (record.user == user || user.role?(:admin))
+    create?
+  end
+
+  def show?
+    record.public? || user.present?
   end
 end

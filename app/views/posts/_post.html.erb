@@ -3,7 +3,6 @@
 <div class="media">
   <%= render partial: 'votes/voter', locals: { topic: post.topic, post: post } %>
   <%= link_to [post.topic, post], class: 'pull-left' do %>
-    <%= image_tag(post.image.thumb.url) if post.image? %>
   <% end %>
   <div class="media-body">
     <h4 class="media-heading">

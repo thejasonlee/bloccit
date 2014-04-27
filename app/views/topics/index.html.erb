@@ -1,6 +1,6 @@
 <h1>Topics</h1>
 
-<% if policy(Topic.new).create? %>
+<% if  policy(Topic.new).create? %>
   <%= link_to "New Topic", new_topic_path, class: 'btn btn-success btn-mini' %>
 <% end %>
 

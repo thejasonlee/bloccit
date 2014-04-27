@@ -39,7 +39,7 @@ class Post < ActiveRecord::Base
 
   # Who ever created a post, should automatically be set to "voting" it up.
   def create_vote
-    self.user.votes.create(value: 1, post: self)
+    user.votes.create(value: 1, post: self)
   end 
 end
 
