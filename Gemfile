@@ -14,6 +14,11 @@ group :development do
   gem 'sqlite3'
 end
 
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails', '~> 4.0'
+end
+
 group :assets do
   gem 'bootstrap-sass', '~> 3.1.1'
 end
