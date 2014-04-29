@@ -1,0 +1,8 @@
+<!-- app/views/comments/destroy.js.erb -->
+
+<% if @comment.destroyed? %>
+  $('#comment-' +<%= @comment.id %>).hide();
+  $('.js-comments-count').html("<%= @post.comments.count %> Comments");
+<% else %>
+  $('#comment-' +<%= @comment.id %>).prepend("<div class='alert alert-error'><%= flash[:error] %></div>");
+<% end %>

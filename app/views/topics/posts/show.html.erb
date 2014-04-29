@@ -27,9 +27,10 @@
   
     <hr>
 
-    <h2><%= @comments.count %> Comments</h2>
+    <h2 class='js-comments-count'><%= @comments.count %> Comments</h2>
     <%= render partial: 'comments/comment', colleciton: @comments %>
-    
+    </div>
+
     <hr>
 
     <h4>New Comment</h4>
