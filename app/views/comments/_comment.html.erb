@@ -1,10 +1,8 @@
 <!--app/views/comments/_comment.html.erb -->
-<!--content_tag :div, class: 'media', id: "comment-#{comment.id}" do -->
-<!--image_tag(comment.user.avatar.small.url) if comment.user.avatar? -->
 
-<%= content_tag :div, class: 'media', id: "comment-#{1}" do %>
+<%= content_tag :div, class: 'media', id: "comment-#{comment.id}" do %>
   <%= link_to '#', class: 'pull-left' do %>
-    <%= image_tag(1) if 1 %>
+    <%= image_tag(comment.user.avatar.small.url) if comment.user.avatar? %>
   <% end %>
   <div class="media-body">
     <small>
