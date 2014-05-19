@@ -1,4 +1,4 @@
-
+<% if policy( Vote.new ).create? %>
   <div class="vote-arrows pull-left">
     <span>   
         <%= link_to " ", 
@@ -16,3 +16,4 @@
         class: "glyphicon glyphicon-chevron-down #{(current_user.voted(post) && current_user.voted(post).down_vote?) ? 'voted' : '' }" %>
     </span>
   </div>
+<% end %>

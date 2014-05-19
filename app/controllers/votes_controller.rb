@@ -1,5 +1,6 @@
 class VotesController < ApplicationController
   before_filter :setup
+  before_filter :require_login
 
   def up_vote
     update_vote(1)
@@ -18,6 +19,14 @@ class VotesController < ApplicationController
     @post = @topic.posts.find(params[:post_id])
 
     @vote = @post.votes.where(user_id: current_user.id).first
+  end
+  
+  private
+  def require_login
+    unless logged_in?
+      flash[:error] = "You must be logged in to acces this section."
+      redirect_to root_url #halts request cycle
+    end
   end
 
   def update_vote(new_value)
